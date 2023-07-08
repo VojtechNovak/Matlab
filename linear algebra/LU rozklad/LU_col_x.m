@@ -1,0 +1,18 @@
+function [ L, U ] = LU_col_x( A )
+%UNTITLED LU rozklad - sloupcova verze, pøepisování A
+%   Detailed explanation goes here
+
+[n,m]=size(A);
+
+for k=1:n-1
+    A(k+1:n,k)=A(k+1:n,k)/A(k,k);
+    for j=k+1:n
+        A(k+1:n,j)=A(k+1:n,j)-A(k+1:n,k)*A(k,j);
+    end
+end
+
+L=tril(A, -1)+eye(n);
+U=triu(A);
+
+end
+

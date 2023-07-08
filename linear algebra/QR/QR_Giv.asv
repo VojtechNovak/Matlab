@@ -1,0 +1,19 @@
+function [ Q,R ] = QR_Giv( A )
+%QR_GIV QR pomoci Givensovy transformace
+%   Detailed explanation goes here
+
+[m,n]=size(A);
+Q=eye(m);
+R=A;
+
+for j=2:m               %radky
+    for i=1:j-1         %sloupce
+        c=A(i-1,j)/sqrt(A(i-1,j)^2+A(i,j)^2);       %kosinus
+        s=-A(i,j)/sqrt(A(i-1,j)^2+A(i,j)^2);       %sinus
+            G(i-1, j-1)=
+    end
+    
+end
+
+end
+

@@ -1,0 +1,27 @@
+function [ y, P ] = House( y, a, b )
+%UNTITLED2 Summary of this function goes here
+%   Detailed explanation goes here
+
+[n,m]=size(y);
+if a>1,
+    x=y(a-1:b);
+    Px=zeros(b-a+2,1);
+    Px(1)=norm(x);
+    v=-sign(x(1))*Px-x
+    P0=eye(b-a+2)-2*(v*v')/(v'*v);
+    P=eye(n);
+    P(a-1:b,a-1:b)=P0;
+    y=P*y;
+else
+    x=y(a:b+1);
+    Px=zeros(b-a+2,1);
+    Px(b+1)=norm(x);
+    v=-sign(x(1))*Px-x
+    P0=eye(b-a+2)-2*(v*v')/(v'*v);
+    P=eye(n);
+    P(a:b+1,a:b+1)=P0;
+    y=P*y;
+end
+
+end
+

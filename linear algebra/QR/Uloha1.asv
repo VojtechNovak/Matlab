@@ -1,0 +1,22 @@
+function [ v, Q ] = Uloha1( v,x )
+%QR_GIV QR pomoci Givensovy transformace
+%   Detailed explanation goes here
+
+[n,m]=size(v);              %n radku vektoru
+Q=eye(n);
+
+for i=x:n            %radky
+    c=A(i-1,j)/sqrt(A(i-1,j)^2+A(i,j)^2);       %kosinus
+    s=-A(i,j)/sqrt(A(i-1,j)^2+A(i,j)^2);       %sinus
+        G=eye(m);
+        G(i-1,i-1)=c;
+        G(i-1,i)=s;
+        G(i,i-1)=-s;
+        G(i,i)=c;
+    A=G'*A;
+    Q=Q*G;
+end
+ 
+
+end
+

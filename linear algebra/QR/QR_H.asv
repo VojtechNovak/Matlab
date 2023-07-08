@@ -1,0 +1,13 @@
+function [ output_args ] = QR_H( input_args )
+%QR_H QR pomoci Householderovy transformace
+%   Detailed explanation goes here
+
+
+[m,n]=size(A);
+Q=eye(m);
+R=A;
+
+
+
+end
+
