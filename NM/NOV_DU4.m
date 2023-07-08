@@ -1,0 +1,45 @@
+%% zadani funkce, poctu delicich bodu, atd
+f= @(x) sin(x);
+
+x = linspace(-2,5,100);
+y = f(x);
+
+figure;
+plot(x,y,'k','linewidth',2);
+grid on; hold on;
+
+a = -pi/2;
+b = pi/2;
+int_exact = integral(f,a,b);
+
+X = linspace(a,b,100);
+Y = f(X);
+area(X,Y,'facecolor','y');
+
+n = 2;
+h = (b-a)/n;
+Xs = a:h:b;
+%% slozene lichobeznikove pravidlo
+int_slozlich = 0;
+
+figure; hold on;
+plot(x,y,'k','linewidth',2);
+for i = 1:n
+    xs1 = Xs(i);
+    xs2 = Xs(i+1);
+    int_slozlich = int_slozlich + (h/2)*(f(xs1)+f(xs2));
+    area([xs1 xs2],[f(xs1) f(xs2)],'facecolor','g');
+end
+disp(['hodnota integralu spoctena sloz. lich. pravidlem je: ' num2str(int_slozlich)]);
+disp(['presne reseni integralu: ' num2str(int_exact)]);
+%% slozene obdelnikove pravidlo
+Sab = 0;
+figure; hold on;
+plot(x,y,'k','linewidth',2);
+for j = 1:n
+    xs1 = Xs(j);
+    xs2 = Xs(j+1);
+    Sab = Sab + h*f((xs1+xs2)/2);
+    area([xs1 xs2],[f((xs2+xs1)/2) f((xs2+xs1)/2)],'facecolor','g');
+end
+disp(['hodnota integralu spoctena sloz. obd. pravidlem je: ' num2str(Sab)]);
