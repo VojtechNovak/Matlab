@@ -1,0 +1,13 @@
+A = [0,1;2,3];
+B = [4,5;6,7];
+v = [1,3];
+vt = v';
+v1 = [1, 3, 2, 4, 6, 5];
+S = A+B;
+P = A*B;
+Pp = A.*B;
+power = A^2;
+ppower = A.^2;
+skalar = A*3;
+Av = A.*v;
+Avt = A.*vt;
